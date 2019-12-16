@@ -159,6 +159,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pipe_search_item_pipe__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pipe/search-item.pipe */ "./src/app/pipe/search-item.pipe.ts");
 /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
 /* harmony import */ var angular_font_awesome__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-font-awesome */ "./node_modules/angular-font-awesome/dist/angular-font-awesome.es5.js");
+/* harmony import */ var primeng_slider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! primeng/slider */ "./node_modules/primeng/slider.js");
+/* harmony import */ var primeng_slider__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(primeng_slider__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var ng5_slider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ng5-slider */ "./node_modules/ng5-slider/esm5/ng5-slider.js");
 
 
 
@@ -175,6 +178,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+// import { RangeSliderModule  } from 'ngx-rangeslider-component';
 
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -200,6 +206,10 @@ var AppModule = /** @class */ (function () {
                 angular_font_awesome__WEBPACK_IMPORTED_MODULE_16__["AngularFontAwesomeModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
                 _angular_material_input__WEBPACK_IMPORTED_MODULE_15__["MatInputModule"],
+                primeng_slider__WEBPACK_IMPORTED_MODULE_17__["SliderModule"],
+                ng5_slider__WEBPACK_IMPORTED_MODULE_18__["Ng5SliderModule"]
+                // ButtonModule,
+                // InputTextModule
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
@@ -220,7 +230,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n   <span class=\"container\">\n     <img src=\"assets/starPic.jpg\" class=\"image\">\n   </span>\n   <!-- <div class=\"col-md-4\">\n \n     <app-search></app-search>\n   \n </div> -->\n </nav>\n<div class=\"row mainContentDiv\" > \n   <div class=\"col-md-8\">\n      <div class=\"container\">\n         <div class=\"row\">\n            <div class=\"form-group col-md-12 cartCtrl\" *ngFor=\"let item of selectedProduct; index as i\"\n               style=\" width: 130px; height: 130px;\">\n               <img src=\"{{item.img_url}}\" class=\"cartImage\" width=\"100\" height=\"100\" />\n               <span><b> {{item.category}} </b></span>\n               <span><b>{{item.price | currency: 'INR'}} <span [ngClass]=\"item.discount == 0 ? '' : 'strike'\"\n                        style=\"color: grey;\">{{(item.price*100)/(100-item.discount) | number}}</span></b> </span>\n               <span class=\"cartDiscountPercent\"> <b> {{item.discount}}%off</b></span>\n               <div class=\"input-group btnCart\">\n                  <button type=\"text\" value=\"-\" (click)=\"minusOne(item.counter, i)\" class=\"button-minus\">-</button>\n                  <input type=\"number\" id=\"inputValue\" [(ngModel)]='item.counter' name=\"quantity\"\n                     class=\"quantity-field\" />\n                  <button type=\"button\" value=\"+\" (click)=\"addOne(item.counter, i)\" class=\"button-plus\">+</button>\n                  <a href=\"\" class=\"removeBtn\"  (click)=\"removeProduct(item)\">Remove</a>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n   <div class=\"col-md-4 priceBox\">\n      <h2>PRICE DETAILS</h2>\n      <hr>\n      <div class=\"container\">\n         <h5> Price ({{totalCounter}} item) : <span class=\"cartActualPrice\">{{actualAmount}}</span></h5>\n         <h5> Discount : <span class=\"cartDiscountPrice\"> {{discountAmount}}</span></h5>\n         <hr>\n         <h3>Total Payable <span class=\"cartTotalPrice\">{{totalAmount}}</span> </h3>\n      </div>\n      </div>\n   </div>\n<style>\n   .strike {\n      text-decoration: line-through;\n   }\n</style>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n   <span class=\"container\">\n     <img src=\"assets/starPic.jpg\" class=\"image\">\n   </span>\n </nav>\n<div class=\"row mainContentDiv\" > \n   <div class=\"col-md-8\">\n      <div class=\"container\">\n         <div class=\"row\">\n            <div class=\"form-group col-md-12 cartCtrl\" *ngFor=\"let item of selectedProduct; index as i\"\n               style=\" width: 130px; height: 130px;\">\n               <img src=\"{{item.img_url}}\" class=\"cartImage\" width=\"100\" height=\"100\" />\n               <span><b> {{item.category}} </b></span>\n               <span><b>{{item.price | currency: 'INR'}} <span [ngClass]=\"item.discount == 0 ? '' : 'strike'\"\n                        style=\"color: grey;\">{{(item.price*100)/(100-item.discount) | number}}</span></b> </span>\n               <span class=\"cartDiscountPercent\"> <b> {{item.discount}}%off</b></span>\n               <div class=\"input-group btnCart\">\n                  <button type=\"text\" value=\"-\" (click)=\"minusOne(item.counter, i)\" class=\"button-minus\">-</button>\n                  <input type=\"number\" id=\"inputValue\" [(ngModel)]='item.counter' name=\"quantity\"\n                     class=\"quantity-field\" />\n                  <button type=\"button\" value=\"+\" (click)=\"addOne(item.counter, i)\" class=\"button-plus\">+</button>\n                  <a href=\"\" class=\"removeBtn\"  (click)=\"removeProduct(item)\">Remove</a>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n   <div class=\"col-md-4 priceBox\">\n      <h2>PRICE DETAILS</h2>\n      <hr>\n      <div class=\"container\">\n         <h5> Price ({{totalCounter}} item) : <span class=\"cartActualPrice\">{{actualAmount}}</span></h5>\n         <h5> Discount : <span class=\"cartDiscountPrice\"> {{discountAmount}}</span></h5>\n         <hr>\n         <h3>Total Payable <span class=\"cartTotalPrice\">{{totalAmount}}</span> </h3>\n      </div>\n      </div>\n   </div>"
 
 /***/ }),
 
@@ -231,7 +241,7 @@ module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".input-group {\n  clear: both;\n  margin-left: 63%;\n  margin-top: -12%;\n  position: relative; }\n\n.input-group .button-minus,\n.input-group .button-plus {\n  font-weight: bold;\n  height: 38px;\n  padding: 0;\n  width: 38px;\n  position: relative; }\n\n.input-group .quantity-field {\n  position: relative;\n  height: 38px;\n  left: -6px;\n  text-align: center;\n  width: 62px;\n  display: inline-block;\n  font-size: 13px;\n  margin: 0 0 5px;\n  resize: vertical; }\n\n.button-plus {\n  left: -13px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jYXJ0LWljb24vQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGNhcnQtaWNvblxcY2FydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQTtFQUNFLFdBQVc7RUFDWCxnQkFsQmdCO0VBbUJoQixnQkFsQmtCO0VBbUJsQixrQkFsQjJCLEVBQUE7O0FBcUI3Qjs7RUFFRSxpQkFuQmE7RUFvQmIsWUF2QmlCO0VBd0JqQixVQXZCZTtFQXdCZixXQXZCZ0I7RUF3QmhCLGtCQTNCMkIsRUFBQTs7QUE4QjdCO0VBQ0Usa0JBL0IyQjtFQWdDM0IsWUEvQmlCO0VBZ0NqQixVQTVCZTtFQTZCZixrQkE1QmlCO0VBNkJqQixXQXpCa0I7RUEwQmxCLHFCQTdCNEI7RUE4QjVCLGVBN0JpQjtFQThCakIsZUE3QmlCO0VBOEJqQixnQkE1QnVCLEVBQUE7O0FBK0J6QjtFQUNFLFdBL0JhLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NhcnQtaWNvbi9jYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuJGlucHV0R3JvdXBNTDogNjMlO1xuJGlucHV0R3JvdXBNVDogIC0xMiU7XG4kaW5wdXRHcm91cFBvc2l0aW9uOiByZWxhdGl2ZTtcbiRidXR0b25IZWlnaHQ6IDM4cHg7XG4kYnV0dG9uUGFkZGluZzogMDsgXG4kYnV0dG9uV2lkdGg6IDM4cHg7XG4kYnV0dG9uRlc6IGJvbGQ7XG4kcXVhbnRpdHlNTDogLTZweDtcbiRxdWFudGl0eVRBOiBjZW50ZXI7XG4kcXVhbnRpdHlEaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4kcXVhbnRpdHlTaXplOiAxM3B4O1xuJHF1YW50aXR5TTogMCAwIDVweDtcbiRxdWFudGl0eVdpZHRoOiA2MnB4O1xuJHF1YW50aXR5UmVzaXplOiB2ZXJ0aWNhbDtcbiRidG5QbHVzOiAtMTNweDtcblxuLmlucHV0LWdyb3VwIHtcbiAgY2xlYXI6IGJvdGg7XG4gIG1hcmdpbi1sZWZ0OiAkaW5wdXRHcm91cE1MO1xuICBtYXJnaW4tdG9wOiAkaW5wdXRHcm91cE1UO1xuICBwb3NpdGlvbjogJGlucHV0R3JvdXBQb3NpdGlvbjtcbn1cblxuLmlucHV0LWdyb3VwIC5idXR0b24tbWludXMsXG4uaW5wdXQtZ3JvdXAgLmJ1dHRvbi1wbHVzIHtcbiAgZm9udC13ZWlnaHQ6ICRidXR0b25GVztcbiAgaGVpZ2h0OiAkYnV0dG9uSGVpZ2h0O1xuICBwYWRkaW5nOiAkYnV0dG9uUGFkZGluZzs7XG4gIHdpZHRoOiAkYnV0dG9uV2lkdGg7XG4gIHBvc2l0aW9uOiAkaW5wdXRHcm91cFBvc2l0aW9uO1xufVxuXG4uaW5wdXQtZ3JvdXAgLnF1YW50aXR5LWZpZWxkIHtcbiAgcG9zaXRpb246ICRpbnB1dEdyb3VwUG9zaXRpb247XG4gIGhlaWdodDogJGJ1dHRvbkhlaWdodDtcbiAgbGVmdDogJHF1YW50aXR5TUw7XG4gIHRleHQtYWxpZ246ICRxdWFudGl0eVRBO1xuICB3aWR0aDogJHF1YW50aXR5V2lkdGg7XG4gIGRpc3BsYXk6ICRxdWFudGl0eURpc3BsYXk7XG4gIGZvbnQtc2l6ZTogJHF1YW50aXR5U2l6ZTtcbiAgbWFyZ2luOiAkcXVhbnRpdHlNO1xuICByZXNpemU6ICRxdWFudGl0eVJlc2l6ZTtcbn1cblxuLmJ1dHRvbi1wbHVzIHtcbiAgbGVmdDogJGJ0blBsdXM7XG59Il19 */"
+module.exports = ".input-group {\n  clear: both;\n  margin-left: 63%;\n  margin-top: -12%;\n  position: relative; }\n\n.input-group .button-minus,\n.input-group .button-plus {\n  font-weight: bold;\n  height: 38px;\n  padding: 0;\n  width: 38px;\n  position: relative; }\n\n.input-group .quantity-field {\n  position: relative;\n  height: 38px;\n  left: -6px;\n  text-align: center;\n  width: 62px;\n  display: inline-block;\n  font-size: 13px;\n  margin: 0 0 5px;\n  resize: vertical; }\n\n.button-plus {\n  left: -13px; }\n\n.strike {\n  text-decoration: line-through; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jYXJ0LWljb24vQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGNhcnQtaWNvblxcY2FydC1pY29uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQTtFQUNFLFdBQVc7RUFDWCxnQkFsQmdCO0VBbUJoQixnQkFsQmtCO0VBbUJsQixrQkFsQjJCLEVBQUE7O0FBcUI3Qjs7RUFFRSxpQkFuQmE7RUFvQmIsWUF2QmlCO0VBd0JqQixVQXZCZTtFQXdCZixXQXZCZ0I7RUF3QmhCLGtCQTNCMkIsRUFBQTs7QUE4QjdCO0VBQ0Usa0JBL0IyQjtFQWdDM0IsWUEvQmlCO0VBZ0NqQixVQTVCZTtFQTZCZixrQkE1QmlCO0VBNkJqQixXQXpCa0I7RUEwQmxCLHFCQTdCNEI7RUE4QjVCLGVBN0JpQjtFQThCakIsZUE3QmlCO0VBOEJqQixnQkE1QnVCLEVBQUE7O0FBK0J6QjtFQUNFLFdBL0JhLEVBQUE7O0FBaUNmO0VBQ0UsNkJBQTZCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2NhcnQtaWNvbi9jYXJ0LWljb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcblxuJGlucHV0R3JvdXBNTDogNjMlO1xuJGlucHV0R3JvdXBNVDogIC0xMiU7XG4kaW5wdXRHcm91cFBvc2l0aW9uOiByZWxhdGl2ZTtcbiRidXR0b25IZWlnaHQ6IDM4cHg7XG4kYnV0dG9uUGFkZGluZzogMDsgXG4kYnV0dG9uV2lkdGg6IDM4cHg7XG4kYnV0dG9uRlc6IGJvbGQ7XG4kcXVhbnRpdHlNTDogLTZweDtcbiRxdWFudGl0eVRBOiBjZW50ZXI7XG4kcXVhbnRpdHlEaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4kcXVhbnRpdHlTaXplOiAxM3B4O1xuJHF1YW50aXR5TTogMCAwIDVweDtcbiRxdWFudGl0eVdpZHRoOiA2MnB4O1xuJHF1YW50aXR5UmVzaXplOiB2ZXJ0aWNhbDtcbiRidG5QbHVzOiAtMTNweDtcblxuLmlucHV0LWdyb3VwIHtcbiAgY2xlYXI6IGJvdGg7XG4gIG1hcmdpbi1sZWZ0OiAkaW5wdXRHcm91cE1MO1xuICBtYXJnaW4tdG9wOiAkaW5wdXRHcm91cE1UO1xuICBwb3NpdGlvbjogJGlucHV0R3JvdXBQb3NpdGlvbjtcbn1cblxuLmlucHV0LWdyb3VwIC5idXR0b24tbWludXMsXG4uaW5wdXQtZ3JvdXAgLmJ1dHRvbi1wbHVzIHtcbiAgZm9udC13ZWlnaHQ6ICRidXR0b25GVztcbiAgaGVpZ2h0OiAkYnV0dG9uSGVpZ2h0O1xuICBwYWRkaW5nOiAkYnV0dG9uUGFkZGluZzs7XG4gIHdpZHRoOiAkYnV0dG9uV2lkdGg7XG4gIHBvc2l0aW9uOiAkaW5wdXRHcm91cFBvc2l0aW9uO1xufVxuXG4uaW5wdXQtZ3JvdXAgLnF1YW50aXR5LWZpZWxkIHtcbiAgcG9zaXRpb246ICRpbnB1dEdyb3VwUG9zaXRpb247XG4gIGhlaWdodDogJGJ1dHRvbkhlaWdodDtcbiAgbGVmdDogJHF1YW50aXR5TUw7XG4gIHRleHQtYWxpZ246ICRxdWFudGl0eVRBO1xuICB3aWR0aDogJHF1YW50aXR5V2lkdGg7XG4gIGRpc3BsYXk6ICRxdWFudGl0eURpc3BsYXk7XG4gIGZvbnQtc2l6ZTogJHF1YW50aXR5U2l6ZTtcbiAgbWFyZ2luOiAkcXVhbnRpdHlNO1xuICByZXNpemU6ICRxdWFudGl0eVJlc2l6ZTtcbn1cblxuLmJ1dHRvbi1wbHVzIHtcbiAgbGVmdDogJGJ0blBsdXM7XG59XG4uc3RyaWtlIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7XG59Il19 */"
 
 /***/ }),
 
@@ -331,7 +341,7 @@ var CartIconComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    <div data-role=\"main\" class=\"ui-content col-md-8 filterContent\">\n        <h1>Filter</h1>\n        <form #minMaxValue=\"ngForm\">\n        <div data-role=\"rangeslider\">              \n              <input type=\"range\" name=\"price-min\" id=\"priceMin\" ngModel value=\"100\" min=\"0\" max=\"10000\">  \n              <input type=\"range\" name=\"price-max\" id=\"priceMax\" ngModel value=\"10000\" min=\"0\" max=\"10000\">\n            </div>\n        <label class=\"filterLabel\">price</label>\n        <button class=\"btn btn-warning filterBtn\" (click)=\"updatedMinMaxValue()\">\n        Apply </button>\n      </form>\n    </div>\n\n    <!-- <div data-role=\"main\" class=\"ui-content col-md-8 filterContent\">\n      <h1>Filter</h1>\n    <form class=\"ng-untouched ng-pristine ng-valid\">\n      <div data-role=\"rangeslider\" class=\"ui-rangeslider\">\n         <input id=\"priceMin\" max=\"10000\" min=\"0\" name=\"price-min\" ngmodel=\"\" type=\"number\" data-type=\"range\" value=\"100\" ng-reflect-name=\"price-min\" ng-reflect-model=\"\" class=\"ng-untouched ng-pristine ng-valid ui-shadow-inset ui-corner-all ui-slider-input ui-rangeslider-first ui-body-inherit\">\n         <input id=\"priceMax\" max=\"10000\" min=\"0\" name=\"price-max\" ngmodel=\"\" type=\"number\" data-type=\"range\" value=\"10000\" ng-reflect-name=\"price-max\" ng-reflect-model=\"\" class=\"ng-untouched ng-pristine ng-valid ui-shadow-inset ui-corner-all ui-slider-input ui-rangeslider-last ui-body-inherit\">\n         <div class=\"ui-rangeslider-sliders\">\n            <div role=\"application\" class=\"ui-slider-track ui-shadow-inset ui-bar-inherit ui-corner-all\" aria-disabled=\"false\">\n               <div class=\"ui-slider-bg ui-btn-active\" style=\"width: 99%; margin-left: 1%;\"></div>\n            </div>\n            <div role=\"application\" class=\"ui-slider-track ui-shadow-inset ui-bar-inherit ui-corner-all\" aria-disabled=\"false\">\n               <div class=\"ui-slider-bg ui-btn-active\" style=\"width: 99%; margin-left: 1%;\"></div>\n               <a href=\"#\" class=\"ui-slider-handle ui-btn ui-shadow ui-btn-null\" role=\"slider\" aria-valuemin=\"0\" aria-valuemax=\"10000\" aria-valuenow=\"100\" aria-valuetext=\"100\" title=\"100\" aria-labelledby=\"priceMin-label\" style=\"left: 1%;\"></a><a href=\"#\" class=\"ui-slider-handle ui-btn ui-shadow ui-btn-null\" role=\"slider\" aria-valuemin=\"0\" aria-valuemax=\"10000\" aria-valuenow=\"10000\" aria-valuetext=\"10000\" title=\"10000\" aria-labelledby=\"priceMax-label\" style=\"left: 100%;\"></a>\n            </div>\n         </div>\n      </div>\n      <label class=\"filterLabel\">price</label>\n      <button class=\"btn btn-warning filterBtn ui-btn ui-shadow ui-corner-all\" (click)=\"updatedMinMaxValue()\"> Apply </button>\n   </form>\n   </div> -->"
+module.exports = "\n    <div data-role=\"main\" class=\"ui-content col-md-8 filterContent\">\n    <h1>Filter</h1>\n    <ng5-slider [(value)]=\"rangeSliderMinValue\" [(highValue)]=\"rangeSliderMaxValue\" \n    [options]=\"rangeSliderOptions\"></ng5-slider>\n    <label class=\"filterLabel\">price</label>\n    <button class=\"btn btn-warning filterBtn ui-btn ui-shadow ui-corner-all\" (click)=\"updatedMinMaxValue()\">\n    Apply </button>\n    </div>\n"
 
 /***/ }),
 
@@ -342,7 +352,7 @@ module.exports = "\n    <div data-role=\"main\" class=\"ui-content col-md-8 filt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ui-rangeslider {\n  margin: .5em 0; }\n\n.ui-rangeslider\n.ui-rangeslider-sliders {\n  position: relative;\n  overflow: visible;\n  height: 30px;\n  margin: 0 68px; }\n\n.ui-rangeslider .ui-slider-input.ui-rangeslider-last {\n  float: right; }\n\n.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {\n  height: 15px;\n  border-width: 1px; }\n\n.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {\n  background-color: transparent;\n  background: 0;\n  border-width: 0;\n  height: 0; }\n\n.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track {\n  position: absolute;\n  top: 6px;\n  right: 0;\n  left: 0;\n  margin: 0; }\n\n.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track {\n  position: absolute;\n  top: 6px;\n  right: 0;\n  left: 0;\n  margin: 0; }\n\n.ui-rangeslider .ui-slider-track:first-child .ui-slider-bg {\n  display: none; }\n\n.ui-rangeslider:before, .ui-rangeslider:after {\n  content: \"\";\n  display: table; }\n\n.ui-rangeslider:after {\n  clear: both; }\n\n.ui-rangeslider:before, .ui-rangeslider:after {\n  content: \"\";\n  display: table; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9maWx0ZXIvQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGZpbHRlclxcZmlsdGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0ksY0FBYyxFQUFBOztBQU9kOztFQUVBLGtCQUFrQjtFQUNsQixpQkFBaUI7RUFDakIsWUFBWTtFQUNaLGNBQWMsRUFBQTs7QUFNZDtFQUNJLFlBQVksRUFBQTs7QUFPaEI7RUFDSSxZQUFZO0VBQ1osaUJBQWlCLEVBQUE7O0FBSXJCO0VBQ0ksNkJBQTZCO0VBQzdCLGFBQWE7RUFDYixlQUFlO0VBQ2YsU0FBUyxFQUFBOztBQUliO0VBQ0ksa0JBQWtCO0VBQ2xCLFFBQVE7RUFDUixRQUFRO0VBQ1IsT0FBTztFQUNQLFNBQVMsRUFBQTs7QUFJYjtFQUNJLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsUUFBUTtFQUNSLE9BQU87RUFDUCxTQUFTLEVBQUE7O0FBSWI7RUFDSSxhQUFhLEVBQUE7O0FBR2pCO0VBQ0ksV0FBVztFQUNYLGNBQWMsRUFBQTs7QUFHbEI7RUFDSSxXQUFXLEVBQUE7O0FBRWY7RUFDSSxXQUFXO0VBQ1gsY0FBYyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9maWx0ZXIvZmlsdGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi51aS1yYW5nZXNsaWRlciB7XHJcbiAgICBtYXJnaW46IC41ZW0gMDtcclxuICAgIH1cclxuICAgIFxyXG4gICAgXHJcbiAgICBcclxuICAgIFxyXG4gICAgXHJcbiAgICAudWktcmFuZ2VzbGlkZXJcclxuICAgIC51aS1yYW5nZXNsaWRlci1zbGlkZXJzIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIG92ZXJmbG93OiB2aXNpYmxlO1xyXG4gICAgaGVpZ2h0OiAzMHB4O1xyXG4gICAgbWFyZ2luOiAwIDY4cHg7XHJcbiAgICBcclxuICAgIH1cclxuICAgIFxyXG4gICAgXHJcbiAgICBcclxuICAgIC51aS1yYW5nZXNsaWRlciAudWktc2xpZGVyLWlucHV0LnVpLXJhbmdlc2xpZGVyLWxhc3Qge1xyXG4gICAgICAgIGZsb2F0OiByaWdodDtcclxuICAgIH1cclxuICAgIFxyXG4gICAgXHJcbiAgICBcclxuICAgIFxyXG4gICAgXHJcbiAgICAudWktcmFuZ2VzbGlkZXIgLnVpLXJhbmdlc2xpZGVyLXNsaWRlcnMgLnVpLXNsaWRlci10cmFjazpmaXJzdC1jaGlsZCB7XHJcbiAgICAgICAgaGVpZ2h0OiAxNXB4O1xyXG4gICAgICAgIGJvcmRlci13aWR0aDogMXB4O1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBcclxuICAgIC51aS1yYW5nZXNsaWRlciAudWktcmFuZ2VzbGlkZXItc2xpZGVycyAudWktc2xpZGVyLXRyYWNrOmZpcnN0LWNoaWxkIHtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAwO1xyXG4gICAgICAgIGJvcmRlci13aWR0aDogMDtcclxuICAgICAgICBoZWlnaHQ6IDA7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIFxyXG4gICAgLnVpLXJhbmdlc2xpZGVyIC51aS1yYW5nZXNsaWRlci1zbGlkZXJzIC51aS1zbGlkZXItdHJhY2sge1xyXG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICB0b3A6IDZweDtcclxuICAgICAgICByaWdodDogMDtcclxuICAgICAgICBsZWZ0OiAwO1xyXG4gICAgICAgIG1hcmdpbjogMDtcclxuICAgIH1cclxuICAgIFxyXG4gICAgXHJcbiAgICAudWktcmFuZ2VzbGlkZXIgLnVpLXJhbmdlc2xpZGVyLXNsaWRlcnMgLnVpLXNsaWRlci10cmFjayB7XHJcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICAgIHRvcDogNnB4O1xyXG4gICAgICAgIHJpZ2h0OiAwO1xyXG4gICAgICAgIGxlZnQ6IDA7XHJcbiAgICAgICAgbWFyZ2luOiAwO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBcclxuICAgIC51aS1yYW5nZXNsaWRlciAudWktc2xpZGVyLXRyYWNrOmZpcnN0LWNoaWxkIC51aS1zbGlkZXItYmcge1xyXG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICB9XHJcbiAgICBcclxuICAgIC51aS1yYW5nZXNsaWRlcjpiZWZvcmUsIC51aS1yYW5nZXNsaWRlcjphZnRlciB7XHJcbiAgICAgICAgY29udGVudDogXCJcIjtcclxuICAgICAgICBkaXNwbGF5OiB0YWJsZTtcclxuICAgIH1cclxuXHJcbiAgICAudWktcmFuZ2VzbGlkZXI6YWZ0ZXIge1xyXG4gICAgICAgIGNsZWFyOiBib3RoO1xyXG4gICAgfVxyXG4gICAgLnVpLXJhbmdlc2xpZGVyOmJlZm9yZSwgLnVpLXJhbmdlc2xpZGVyOmFmdGVyIHtcclxuICAgICAgICBjb250ZW50OiBcIlwiO1xyXG4gICAgICAgIGRpc3BsYXk6IHRhYmxlO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICAiXX0= */"
+module.exports = "button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {\n  box-sizing: border-box;\n  -webkit-appearance: none;\n  width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9maWx0ZXIvQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGZpbHRlclxcZmlsdGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNJO0VBQ0ksc0JBQXNCO0VBQ3RCLHdCQUF3QjtFQUN4QixXQUFXLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2ZpbHRlci9maWx0ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAgIGJ1dHRvbi51aS1idG4sIC51aS1jb250cm9sZ3JvdXAtY29udHJvbHMgYnV0dG9uLnVpLWJ0bi1pY29uLW5vdGV4dCB7XHJcbiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgICAgICAtd2Via2l0LWFwcGVhcmFuY2U6IG5vbmU7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9Il19 */"
 
 /***/ }),
 
@@ -367,21 +377,37 @@ var FilterComponent = /** @class */ (function () {
         this.productService = productService;
         this.storeProduct = [];
         this.productInPriceRange = [];
+        // rangeValues: number[] = [20,80];
+        this.rangeSliderMinValue = 0;
+        this.rangeSliderMaxValue = 1000;
+        this.rangeSliderOptions = {
+            floor: 0,
+            ceil: 1000
+        };
     }
     FilterComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.productService.getProduct().subscribe(function (item) {
             _this.storeProduct = item;
         });
+        // const fill =  document.getElementById('ex2');
+        console.log('fill ' + this.rangeSliderMinValue);
+        // var slider = new Slider('#ex2', {});
     };
     FilterComponent.prototype.updatedMinMaxValue = function () {
         this.productInPriceRange = [];
-        var minValue = +document.getElementById('priceMin').value; // getting min and max value from template file
-        var maxValue = +document.getElementById('priceMax').value;
+        // let minValue = +(<HTMLInputElement> document.getElementById('priceMin')).value; // getting min and max value from template file
+        // let maxValue = +(<HTMLInputElement>document.getElementById('priceMax')).value;
+        // for(let i=0; i<this.storeProduct.length; i++) {
+        //   if(this.storeProduct[i].price >= minValue  && this.storeProduct[i].price <=maxValue) { 
+        //     this.productInPriceRange.push(this.storeProduct[i]);
+        //     this.productService.getFilterProduct(this.productInPriceRange); 
+        //   }
+        // }
         for (var i = 0; i < this.storeProduct.length; i++) {
-            if (this.storeProduct[i].price >= minValue && this.storeProduct[i].price <= maxValue) { // product condition check btween min and max
+            if (this.storeProduct[i].price >= this.rangeSliderMinValue && this.storeProduct[i].price <= this.rangeSliderMaxValue) {
                 this.productInPriceRange.push(this.storeProduct[i]);
-                this.productService.getFilterProduct(this.productInPriceRange); // product betwwen range export to shopping Component
+                this.productService.getFilterProduct(this.productInPriceRange);
             }
         }
     };
@@ -407,7 +433,7 @@ var FilterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n  <span class=\"container\">\n    <img src=\"assets/starPic.jpg\" class=\"image\">\n  </span>\n  <div class=\"col-md-4\">\n\n    <app-search></app-search>\n  \n</div>\n  <span>\n    <button class=\"btn btn-info btn-lg headerBtn\" (click)=\"navigateToCartPage();\"> \n      <span class=\"fa fa-shopping-cart cart\"> \n          <!-- <i class=\"fa fa-shopping-cart\" style=\"font-size:48px;color:black\"></i>          -->\n          <span class=\"w3-container w3-badge w3-red\">{{counter}}</span>          \n      </span>\n     </button> \n  </span>\n</nav>\n\n\n<div class=\"col-md-12 row mainContentDiv\">\n  <div class=\"col-md-4\">\n    <div class=\"col-md-12\">\n    <app-filter></app-filter>\n    </div>\n  </div>\n  <div class=\"col-md-8\">\n      <app-sort></app-sort>\n    <div class=\"appShopping\">\n      <app-shopping-list></app-shopping-list>\n    </div>\n  </div>\n</div>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n  <span class=\"container\">\n    <img src=\"assets/starPic.jpg\" class=\"image\">\n  </span>\n  <div class=\"col-md-4\">\n\n    <app-search></app-search>\n  \n</div>\n  <span>\n    <button class=\"btn btn-info btn-lg headerBtn ui-btn ui-shadow ui-corner-all\" (click)=\"navigateToCartPage();\"> \n      <span class=\"fa fa-shopping-cart cart\">\n          <span class=\"w3-container w3-badge w3-red\">{{counter}}</span>          \n      </span>\n     </button> \n  </span>\n</nav>\n\n\n<div class=\"col-md-12 row mainContentDiv\">\n  <div class=\"col-md-4\">\n    <div class=\"col-md-12\">\n    <app-filter></app-filter>\n    </div>\n  </div>\n  <div class=\"col-md-8\">\n      <app-sort></app-sort>\n    <div class=\"appShopping\">\n      <app-shopping-list></app-shopping-list>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -418,7 +444,7 @@ module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = "button.ui-btn, .ui-controlgroup-controls button.ui-btn-icon-notext {\n  box-sizing: border-box;\n  -webkit-appearance: none;\n  width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9oZWFkZXIvQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGhlYWRlclxcaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksc0JBQXNCO0VBQ3RCLHdCQUF3QjtFQUN4QixXQUFXLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJidXR0b24udWktYnRuLCAudWktY29udHJvbGdyb3VwLWNvbnRyb2xzIGJ1dHRvbi51aS1idG4taWNvbi1ub3RleHQge1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -481,7 +507,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    \n         <div class=\"col-md-12\">\n            <div class=\"searchBox row\">\n              <input type=\"text\" class=\"form-control searchBar\" placeholder=\"Search\" (keyup)=\"onKey($event)\">\n              <!-- <span class=\"glyphicon glyphicon-search searchIcon\"></span> -->\n              <i class=\"fas fa-search searchIcon\"></i>\n            </div>\n             </div>\n        \n "
+module.exports = "\n    \n         <div class=\"col-md-12\">\n            <div class=\"searchBox row\">\n              <input type=\"text\" class=\"form-control searchBar\" placeholder=\"Search\" (keyup)=\"onKey($event)\">\n              <i class=\"fas fa-search searchIcon\"></i>\n            </div>\n             </div>\n        \n "
 
 /***/ }),
 
@@ -492,7 +518,7 @@ module.exports = "\n    \n         <div class=\"col-md-12\">\n            <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = ".ui-input-text, .ui-input-search {\n  margin: .5em 0;\n  border-width: 1px;\n  border-style: solid; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXHNlYXJjaFxcc2VhcmNoLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBYztFQUNkLGlCQUFpQjtFQUNqQixtQkFBbUIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51aS1pbnB1dC10ZXh0LCAudWktaW5wdXQtc2VhcmNoIHtcclxuICAgIG1hcmdpbjogLjVlbSAwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxcHg7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG59Il19 */"
 
 /***/ }),
 
