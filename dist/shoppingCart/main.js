@@ -230,7 +230,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n   <span class=\"container\">\n     <img src=\"assets/starPic.jpg\" class=\"image\">\n   </span>\n </nav>\n<div class=\"row mainContentDiv\" > \n   <div class=\"col-md-8\">\n      <div class=\"container\">\n         <div class=\"row\">\n            <div class=\"form-group col-md-12 cartCtrl\" *ngFor=\"let item of selectedProduct; index as i\"\n               style=\" width: 130px; height: 130px;\">\n               <img src=\"{{item.img_url}}\" class=\"cartImage\" width=\"100\" height=\"100\" />\n               <span><b> {{item.category}} </b></span>\n               <span><b>{{item.price | currency: 'INR'}} <span [ngClass]=\"item.discount == 0 ? '' : 'strike'\"\n                        style=\"color: grey;\">{{(item.price*100)/(100-item.discount) | number}}</span></b> </span>\n               <span class=\"cartDiscountPercent\"> <b> {{item.discount}}%off</b></span>\n               <div class=\"input-group btnCart\">\n                  <button type=\"text\" value=\"-\" (click)=\"minusOne(item.counter, i)\" class=\"button-minus\">-</button>\n                  <input type=\"number\" id=\"inputValue\" [(ngModel)]='item.counter' name=\"quantity\"\n                     class=\"quantity-field\" />\n                  <button type=\"button\" value=\"+\" (click)=\"addOne(item.counter, i)\" class=\"button-plus\">+</button>\n                  <a href=\"\" class=\"removeBtn\"  (click)=\"removeProduct(item)\">Remove</a>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n   <div class=\"col-md-4 priceBox\">\n      <h2>PRICE DETAILS</h2>\n      <hr>\n      <div class=\"container\">\n         <h5> Price ({{totalCounter}} item) : <span class=\"cartActualPrice\">{{actualAmount}}</span></h5>\n         <h5> Discount : <span class=\"cartDiscountPrice\"> {{discountAmount}}</span></h5>\n         <hr>\n         <h3>Total Payable <span class=\"cartTotalPrice\">{{totalAmount}}</span> </h3>\n      </div>\n      </div>\n   </div>"
+module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n   <span class=\"container-fluid\">\n      <img src=\"assets/starPic.jpg\" class=\"image\">\n   </span>\n</nav>\n\n<div class=\"row mainContentDiv\">\n   <div class=\"col-md-1\">\n      <a class=\"btn btn-primary text-white\" href=\"javascript:void(0);\" style=\" background-color: cadetblue;\"\n         (click)=\"backBtnClick()\">Back</a>\n   </div>\n\n   <div class=\"container-fluid row col-md-7 cartContainer\" style=\"margin-left: 3%;\">\n      <div class=\"form-group col-xs-12 col-sm-12 cartCtrl row\" *ngFor=\"let item of selectedProduct; index as i\">\n         <div class=\"col-sm-3  col-3\">\n            <img src=\"{{item.img_url}}\" class=\"cartImage\" width=\"100\" height=\"100\" />\n         </div>\n         <div class=\"col-sm-6 col-5 cartDetails\" >\n            <span><b> {{item.category}} </b></span>\n            <span><b>{{item.price | currency: 'INR'}} <span [ngClass]=\"item.discount == 0 ? '' : 'strike'\"\n                     style=\"color: grey;\">{{(item.price*100)/(100-item.discount) | number}}</span></b> </span>\n            <span class=\"cartDiscountPercent\"> <b> {{item.discount}}%off</b></span>\n         </div>\n         <div class=\"input-group btnCart col-sm-4 col-5\">\n            <button type=\"text\" value=\"-\" (click)=\"minusOne(item.counter, i)\" class=\"button-minus\">-</button>\n            <input type=\"number\" id=\"inputValue\" [(ngModel)]='item.counter' name=\"quantity\" class=\"quantity-field\" />\n            <button type=\"button\" value=\"+\" (click)=\"addOne(item.counter, i)\" class=\"button-plus\">+</button>\n            <a href=\"\" class=\"removeBtn\" (click)=\"removeProduct(item)\">Remove</a>\n         </div>\n      </div>\n   </div>\n\n   <div class=\"container-fluid col-8 col-sm-12 col-md-3  priceBox\" >\n      <h2 class=\"card-header\">PRICE DETAILS</h2>\n      <hr>\n      <div class=\" card-body\">\n         <h5> Price ({{totalCounter}} item) : <span class=\"cartActualPrice\">{{actualAmount}}</span></h5>\n         <h5> Discount : <span class=\"cartDiscountPrice\"> {{discountAmount}}</span></h5>\n         <hr>\n         <h3>Total Payable <span class=\"cartTotalPrice\">{{totalAmount}}</span> </h3>\n      </div>\n   </div>\n</div>"
 
 /***/ }),
 
@@ -258,15 +258,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _service_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../service/product.service */ "./src/app/service/product.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _service_product_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/product.service */ "./src/app/service/product.service.ts");
+
 
 
 
 
 var CartIconComponent = /** @class */ (function () {
-    function CartIconComponent(productService, router) {
+    function CartIconComponent(productService, router, _location) {
         this.productService = productService;
         this.router = router;
+        this._location = _location;
         this.storeProduct = [];
         // counter: number = 1;
         this.selectedProduct = [];
@@ -319,13 +322,16 @@ var CartIconComponent = /** @class */ (function () {
             this.totalAmount = this.totalAmount + (item.counter * item.price); // Total Amount Payable
         }
     };
+    CartIconComponent.prototype.backBtnClick = function () {
+        this._location.back();
+    };
     CartIconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-cart-icon',
             template: __webpack_require__(/*! ./cart-icon.component.html */ "./src/app/components/cart-icon/cart-icon.component.html"),
             styles: [__webpack_require__(/*! ./cart-icon.component.scss */ "./src/app/components/cart-icon/cart-icon.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_service_product_service__WEBPACK_IMPORTED_MODULE_4__["ProductService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]])
     ], CartIconComponent);
     return CartIconComponent;
 }());
@@ -433,7 +439,7 @@ var FilterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-primary fixed-top bg-primary\">\n  <span class=\"container\">\n    <img src=\"assets/starPic.jpg\" class=\"image\">\n  </span>\n  <div class=\"col-md-4\">\n\n    <app-search></app-search>\n  \n</div>\n  <span>\n    <button class=\"btn btn-info btn-lg headerBtn ui-btn ui-shadow ui-corner-all\" (click)=\"navigateToCartPage();\"> \n      <span class=\"fa fa-shopping-cart cart\">\n          <span class=\"w3-container w3-badge w3-red\">{{counter}}</span>          \n      </span>\n     </button> \n  </span>\n</nav>\n\n\n<div class=\"col-md-12 row mainContentDiv\">\n  <div class=\"col-md-4\">\n    <div class=\"col-md-12\">\n    <app-filter></app-filter>\n    </div>\n  </div>\n  <div class=\"col-md-8\">\n      <app-sort></app-sort>\n    <div class=\"appShopping\">\n      <app-shopping-list></app-shopping-list>\n    </div>\n  </div>\n</div>"
+module.exports = "<nav class=\"navbar navbar-primary bg-primary container-fluid\">\n  <span>\n    <img src=\"assets/starPic.jpg\" class=\"image\">\n  </span>\n\n    <app-search class=\"offset-0 offset-sm-2 offset-md-4 offset-lg-6\">\n    </app-search>\n  \n  \n  <span>\n    <button class=\"btn btn-info btn-lg headerBtn ui-btn ui-shadow ui-corner-all\" (click)=\"navigateToCartPage();\"> \n      <span class=\"fa fa-shopping-cart cart\">\n          <span class=\"w3-container w3-badge w3-red\">{{counter}}</span>          \n      </span>\n     </button> \n  </span>\n</nav>\n\n\n<div class=\"col-md-12 row mainContentDiv\">\n  <div class=\"col-md-4\" style=\"margin-top: -7%\">\n    <div class=\"col-md-12\">\n    <app-filter></app-filter>\n    </div>\n  </div>\n  <div class=\"col-md-8\" style=\"margin-top: -5%\">\n      <app-sort></app-sort>\n    <div class=\"appShopping\">\n      <app-shopping-list></app-shopping-list>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -507,7 +513,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    \n         <div class=\"col-md-12\">\n            <div class=\"searchBox row\">\n              <input type=\"text\" class=\"form-control searchBar\" placeholder=\"Search\" (keyup)=\"onKey($event)\">\n              <i class=\"fas fa-search searchIcon\"></i>\n            </div>\n             </div>\n        \n "
+module.exports = "\n              <form class=\"form-inline\">\n                  <input class=\"form-control \" placeholder=\"Search\" type=\"text\" (keyup)=\"onKey($event)\">\n              <i class=\"fas fa-search searchIcon\"></i>\n            </form>"
 
 /***/ }),
 
@@ -518,7 +524,7 @@ module.exports = "\n    \n         <div class=\"col-md-12\">\n            <div c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ui-input-text, .ui-input-search {\n  margin: .5em 0;\n  border-width: 1px;\n  border-style: solid; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zZWFyY2gvQzpcXEFuZ3VsYXJfUHJvamVjdFxcZ2l0SHViQ2xvbmVQcm9qZWN0XFxPbmxpbmVTaG9wcGluZy1tYXN0ZXIvc3JjXFxhcHBcXGNvbXBvbmVudHNcXHNlYXJjaFxcc2VhcmNoLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBYztFQUNkLGlCQUFpQjtFQUNqQixtQkFBbUIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi51aS1pbnB1dC10ZXh0LCAudWktaW5wdXQtc2VhcmNoIHtcclxuICAgIG1hcmdpbjogLjVlbSAwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxcHg7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG59Il19 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuc2NzcyJ9 */"
 
 /***/ }),
 
@@ -569,7 +575,7 @@ var SearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"col-md-12 row\">\n    <!-- <div class=\"form-group col-md-12\" > -->\n\n    <div class=\"col-md-3\" *ngFor=\"let item of storeProduct | searchItem: searchProduct\">\n      <div style=\"padding: 15px 0px;\">\n\n        <img src=\"{{item.img_url}}\"  width=\"150\" height=\"150\" /> <!--class=\"imgClass\"-->\n        <div class=\"formCtrl\">\n          <div class=\"itemCategory\"><b> {{item.category}} </b></div>\n          <span class=\"itemPrice\"><b>{{item.price | currency: 'INR'}} </b></span>\n          <span class=\"itemDiscount\"\n            [ngClass]=\"item.discount == 0 ? '' : 'strike'\"><b>{{(item.price*100)/(100-item.discount) | number}}</b></span>\n\n          <span class=\"discountPercent\"> <b>{{item.discount}}% off</b></span>\n\n          <div class=\"cartBtn\">\n            <button class=\"btn btn-warning addToCart productCart\" (click)=\"addProductOnCart(item)\"><b>Add To\n                Cart</b></button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <!-- </div> -->\n  </div>\n</div>\n\n<style>\n  .strike {\n    text-decoration: line-through;\n  }\n</style>"
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"col-md-12 row\">\n    <!-- <div class=\"form-group col-md-12\" > -->\n\n    <div class=\" form-group col-sm-4 col-6  col-md-3 \" *ngFor=\"let item of storeProduct | searchItem: searchProduct\">\n      <div style=\"padding: 15px 0px;\">\n\n        <img src=\"{{item.img_url}}\"  width=\"150\" height=\"150\" /> <!--class=\"imgClass\"-->\n        <div class=\"formCtrl\">\n          <div class=\"itemCategory\"><b> {{item.category}} </b></div>\n          <span class=\"itemPrice\"><b>{{item.price | currency: 'INR'}} </b></span>\n          <span class=\"itemDiscount\"\n            [ngClass]=\"item.discount == 0 ? '' : 'strike'\"><b>{{(item.price*100)/(100-item.discount) | number}}</b></span>\n\n          <span class=\"discountPercent\"> <b>{{item.discount}}% off</b></span>\n\n          <div class=\"cartBtn\">\n            <button class=\"btn btn-warning addToCart\" (click)=\"addProductOnCart(item)\"><b>Add To\n                Cart</b></button>\n          </div>\n        </div>\n      </div>\n    </div>\n    <!-- </div> -->\n  </div>\n</div>\n\n<style>\n  .strike {\n    text-decoration: line-through;\n  }\n</style>"
 
 /***/ }),
 
@@ -684,7 +690,7 @@ var ShoppingListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\n    <div class=\"sortContainer row\">\n        <label class=\"sortLabel\"><b>Sort By</b></label>\n        <div class=\"sortDiv\">\n            <span class=\"priceSort\"><a href=\"\" (click)=\"priceHighToLow()\"><b>Price--High_Low</b></a></span>\n            <span class=\"priceSort\"><a href=\"\" (click)=\"priceLowToHigh()\"><b>Price--Low_High</b></a></span>\n            <span class=\"priceSort\"><a href=\"\" (click)=\"discountPrice()\"><b>Discount</b></a></span>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"col-md-12\">\n    <div class=\"sortContainer row\" >\n        <label class=\"sortLabel\"><b>Sort By :</b></label>\n        <div class=\"sortDiv row\">\n            <span class=\"priceSort\"><a  class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\" (click)=\"priceHighToLow()\"><b>Price--High_Low</b></a></span>\n            <span class=\"priceSort\"><a  class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\" (click)=\"priceLowToHigh()\"><b>Price--Low_High</b></a></span>\n            <span class=\"priceSort\"><a  class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\" (click)=\"discountPrice()\"><b>Discount</b></a></span>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
